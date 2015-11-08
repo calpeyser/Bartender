@@ -13,8 +13,9 @@ public class RecipeBuilder {
 		this.parts = new TreeMap<Ingredient, Integer>();
 	}
 	
-	public void addPart(Ingredient ingredient, int value) {
+	public RecipeBuilder addPart(Ingredient ingredient, int value) {
 		parts.put(ingredient, value);
+		return this;
 	}
 	
 	public String getName() {

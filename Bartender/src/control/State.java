@@ -10,12 +10,13 @@ import hardware.HardwareEvent;
  */
 public abstract class State {
 
-	protected HardwareCapabilities hardwareCapabilites;
+	protected HardwareCapabilities hardwareCapabilities;
 	
 	public State(HardwareCapabilities hardwareCapabilites) {
-		this.hardwareCapabilites = hardwareCapabilites;
+		this.hardwareCapabilities = hardwareCapabilites;
 	}
 	
-	public abstract void handleEventByState(HardwareEvent event) throws RelinquishException;
-		
+	public abstract void handleEntry();
+	
+	public abstract void handleEventByState(HardwareEvent event) throws RelinquishException;	
 }

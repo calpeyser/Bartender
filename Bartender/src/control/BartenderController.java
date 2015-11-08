@@ -1,21 +1,16 @@
 package control;
 
-import hardware.HardwareCapabilities;
 import hardware.HardwareEvent;
-
-import java.util.Set;
 
 public final class BartenderController implements HardwareEventHandler {
 
 	private StateManager stateManager;
 	private State currentState;
-	private HardwareCapabilities hardwareCapabilities;
 	
 	
-	public BartenderController(StateManager stateManager, HardwareCapabilities hardwareCapabilities) {
+	public BartenderController(StateManager stateManager) {
 		this.stateManager = stateManager;
 		this.currentState = stateManager.getFirstState();
-		this.hardwareCapabilities = hardwareCapabilities;
 	}
 	
 	@Override

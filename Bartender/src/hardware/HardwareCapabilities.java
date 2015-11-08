@@ -1,19 +1,24 @@
 package hardware;
 
-public interface HardwareCapabilities {
+import drinkdata.Recipe;
+
+public abstract class HardwareCapabilities {
+	
+	protected HardwarePrimitiveActions hardwarePrimitiveActions;
+	protected HardwareConfig hardwareConfig;
+	
+	public HardwareCapabilities(HardwarePrimitiveActions hardwarePrimitiveActions, HardwareConfig hardwareConfig) {
+		this.hardwarePrimitiveActions = hardwarePrimitiveActions;
+		this.hardwareConfig = hardwareConfig;
+	}
 	
 	/*
 	 * Writes the given message to some form of output.
 	 */
-	public void writeToDisplay(String message);
+	public abstract void writeToDisplay(String message);
 	
 	/*
-	 * Dispenses amount from the given canister number.
+	 * Mixes a drink.
 	 */
-	public void dispense(int canisterNumber, int amount);
-	
-	/*
-	 * How many canisters does this piece of hardware have?
-	 */
-	public int numberOfCanisters();
+	public abstract void makeRecipe(Recipe recipe);	
 }
