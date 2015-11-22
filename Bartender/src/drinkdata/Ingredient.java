@@ -1,6 +1,6 @@
 package drinkdata;
 
-public class Ingredient {
+public class Ingredient implements Comparable<Ingredient> {
 
 	private String name;
 	
@@ -31,5 +31,10 @@ public class Ingredient {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public int compareTo(Ingredient that) {
+		return this.name.compareTo(that.name);
 	}
 }

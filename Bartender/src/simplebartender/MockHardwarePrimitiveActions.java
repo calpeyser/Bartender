@@ -20,12 +20,11 @@ public class MockHardwarePrimitiveActions implements HardwarePrimitiveActions {
 	}
 
 	@Override
-	public void rotateServo(int degrees) {
-		log.log(new RotatedServoMessage(degrees));
+	public void dispense(int canisterNumber, int amount) {
+		log.log(new DispensedMessage(canisterNumber, amount));
 	}
-
-	@Override
-	public void dispense(int amount) {
-		log.log(new DispensedMessage(amount));
+	
+	public Log getLog() {
+		return log;
 	}
 }

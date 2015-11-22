@@ -9,4 +9,12 @@ public class StateChangeEvent {
 		this.name = name;
 		this.data = data;
 	}	
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Object getData() {
+		return data;
+	}
 }

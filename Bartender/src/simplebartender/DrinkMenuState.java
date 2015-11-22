@@ -24,7 +24,7 @@ public class DrinkMenuState extends State {
 		this.recipes = recipeProvider.recipes();
 		this.recipeIndex = 0;
 	}
-
+		
 	@Override
 	public void handleEntry() {
 		displayCurrentRecipeName();
@@ -64,7 +64,7 @@ public class DrinkMenuState extends State {
 	}
 	
 	private void handleButtonBack() throws RelinquishException {
-		throw new RelinquishException(new StateChangeEvent("Landing Page", SimpleStateChangeEvents.ToLandingPage));
+		throw new RelinquishException(new StateChangeEvent("Landing Page", SimpleStateChangeEvent.ToLandingPage));
 	}
 	
 	private void displayCurrentRecipeName() {

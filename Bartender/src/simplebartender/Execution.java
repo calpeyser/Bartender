@@ -15,7 +15,8 @@ public class Execution {
 		RecipeProvider recipeProvider = new MockRecipeProvider();
 		HardwareConfig hardwareConfig = new MockHardwareConfig(recipeProvider);
 		HardwarePrimitiveActions hardwarePrimitiveActions = new MockHardwarePrimitiveActions();
-		HardwareCapabilities hardwareCapabilties = new RotatingHardwareCapabilities(hardwarePrimitiveActions, hardwareConfig);
+		CanisterConfigFactory canisterConfigFactory = new MockCanisterConfigFactory();
+		HardwareCapabilities hardwareCapabilties = new PumpsetHardwareCapabilities(hardwarePrimitiveActions, hardwareConfig, canisterConfigFactory);
 		StateManager stateManager = new SimpleStateManager(hardwareCapabilties, recipeProvider);
 		BartenderController controller = new BartenderController(stateManager);
 		

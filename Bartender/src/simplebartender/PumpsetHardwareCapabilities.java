@@ -8,14 +8,18 @@ import hardware.HardwareCapabilities;
 import hardware.HardwareConfig;
 import hardware.HardwarePrimitiveActions;
 
-public class RotatingHardwareCapabilities extends HardwareCapabilities {
+public class PumpsetHardwareCapabilities extends HardwareCapabilities {
 
-	public RotatingHardwareCapabilities(
+	private CanisterConfig canisterConfig;
+	
+	public PumpsetHardwareCapabilities(
 			HardwarePrimitiveActions hardwarePrimitiveActions,
-			HardwareConfig hardwareConfig) {
+			HardwareConfig hardwareConfig,
+			CanisterConfigFactory canisterConfigFactory) {
 		super(hardwarePrimitiveActions, hardwareConfig);
+		this.canisterConfig = canisterConfigFactory.getCanisterConfig();
 	}
-
+	
 	@Override
 	public void writeToDisplay(String message) {
 		hardwarePrimitiveActions.writeToDisplay(message);
@@ -30,18 +34,6 @@ public class RotatingHardwareCapabilities extends HardwareCapabilities {
 	}
 	
 	private void dispenseIngredient(Ingredient ingredient, int amount) {
-		rotateToIngredient(ingredient);
-		hardwarePrimitiveActions.dispense(amount);
+		hardwarePrimitiveActions.dispense(canisterConfig.canisterOf(ingredient), amount);
 	}
-	
-	private void rotateToIngredient(Ingredient ingredient) {
-		int canisterNumber = hardwareConfig.canisterOfIngredient(ingredient);
-		rotateToCanister(canisterNumber);
-	}
-	
-	private void rotateToCanister(int canisterNumber) {
-		int degrees = (360/hardwareConfig.numberOfCanisters()) * canisterNumber;
-		hardwarePrimitiveActions.rotateServo(degrees);
-	}
-
 }

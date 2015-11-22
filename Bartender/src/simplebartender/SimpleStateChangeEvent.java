@@ -1,5 +1,5 @@
 package simplebartender;
 
-public enum SimpleStateChangeEvents {
+public enum SimpleStateChangeEvent {
 	ToDrinkMenu, ToLandingPage
 }

@@ -22,4 +22,8 @@ public final class BartenderController implements HardwareEventHandler {
 			currentState = stateManager.changeState(e.getStateChangeEvent());
 		}
 	}
+	
+	public State getCurrentState() {
+		return currentState;
+	}
 }

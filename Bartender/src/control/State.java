@@ -15,7 +15,7 @@ public abstract class State {
 	public State(HardwareCapabilities hardwareCapabilites) {
 		this.hardwareCapabilities = hardwareCapabilites;
 	}
-	
+		
 	public abstract void handleEntry();
 	
 	public abstract void handleEventByState(HardwareEvent event) throws RelinquishException;	

@@ -19,13 +19,27 @@ public class SimpleStateManager extends StateManager {
 	
 	@Override
 	public State getFirstState() {
-		return null;
+		landingState.handleEntry();
+		return landingState;
 	}
 
 	@Override
-	public State changeState(StateChangeEvent stateChangeEvent) {
-		// TODO Auto-generated method stub
-		return null;
+	public State changeState(StateChangeEvent stateChangeEvent) throws IllegalArgumentException {
+		try {
+			SimpleStateChangeEvent event = (SimpleStateChangeEvent) stateChangeEvent.getData();
+			switch (event) {
+			case ToDrinkMenu:
+				drinkMenuState.handleEntry();
+				return drinkMenuState;
+			case ToLandingPage:
+				landingState.handleEntry();
+				return landingState;
+			default:
+				throw new IllegalArgumentException();
+			}
+				
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
-
 }

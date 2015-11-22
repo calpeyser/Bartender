@@ -11,14 +11,14 @@ import control.StateChangeEvent;
  * Enter moves to drink selection, other buttons do nothing.
  */
 public class LandingState extends State {
-
+	
 	public LandingState(HardwareCapabilities hardwareCapabilites) {
 		super(hardwareCapabilites);
 	}
-	
+		
 	@Override
 	public void handleEntry() {
-		hardwareCapabilities.writeToDisplay("Press ENTER to select a drink.");
+		hardwareCapabilities.writeToDisplay(SimpleBartenderMessages.LANDING_MENU_MESSAGE);
 	}
 
 	@Override
@@ -34,6 +34,6 @@ public class LandingState extends State {
 	}
 
 	private void handleButtonEnter() throws RelinquishException {
-		throw new RelinquishException(new StateChangeEvent("Drink Menu", SimpleStateChangeEvents.ToDrinkMenu));
+		throw new RelinquishException(new StateChangeEvent("Drink Menu", SimpleStateChangeEvent.ToDrinkMenu));
 	}
 }
